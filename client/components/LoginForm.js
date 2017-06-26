@@ -2,6 +2,7 @@ import React from 'react'
 import AuthForm from './AuthForm'
 import LoginMutation from '../mutations/Login'
 import { graphql } from 'react-apollo'
+import query from '../queries/CurrentUser'
 
 class LoginForm extends React.Component {
   onSubmit ({ email, password }) {
@@ -9,7 +10,8 @@ class LoginForm extends React.Component {
       variables: {
         email,
         password
-      }
+      },
+      refetchQueries: [{ query }]
     })
   }
   render () {
@@ -22,4 +24,6 @@ class LoginForm extends React.Component {
   }
 }
 
-export default graphql(LoginMutation)(LoginForm)
+export default graphql(LoginMutation)(
+  graphql(query)(LoginForm)
+)
