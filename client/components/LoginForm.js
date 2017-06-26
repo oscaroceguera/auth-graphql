@@ -7,11 +7,10 @@ import query from '../queries/CurrentUser'
 class LoginForm extends React.Component {
   onSubmit ({ email, password }) {
     this.props.mutate({
-      variables: {
-        email,
-        password
-      },
+      variables: { email, password },
       refetchQueries: [{ query }]
+    }).catch(res => {
+      const errors = res.graphQLErrors.map( error => error.message)
     })
   }
   render () {
