@@ -1,5 +1,9 @@
 import React from 'react'
 
+const ERROR = {
+  color: 'red'
+}
+
 class AuthForm extends React.Component {
   constructor (props) {
     super(props)
@@ -30,6 +34,9 @@ class AuthForm extends React.Component {
               value={this.state.password}
               onChange={e => this.setState({ password: e.target.value })}
             />
+          </div>
+          <div style={ERROR}>
+            {this.props.errors.map(error => <div>{error}</div>)}
           </div>
           <button className='btn'>Submit</button>
         </form>
