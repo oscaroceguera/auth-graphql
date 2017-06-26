@@ -7,9 +7,9 @@ import mutation from '../mutations/Logout'
 class Header extends React.Component {
   onLogoutClick () {
     this.props.mutate({
-      // refetchQueries: [{
-      //   query
-      // }]
+      refetchQueries: [{
+        query
+      }]
     })
   }
 
